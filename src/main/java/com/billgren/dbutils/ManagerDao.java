@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import javax.sql.DataSource;
-
-import com.billgren.beans.Login;
 import com.billgren.beans.Manager;
 
 public class ManagerDao {
@@ -83,7 +80,7 @@ public class ManagerDao {
 		
 	}
 	
-	public void UpdateManagerTeamId(int manId, int teamId) throws Exception {
+	public void updateManagerTeamId(int manId, int teamId) throws Exception {
 		
 		Connection connection = null;
 		PreparedStatement statement = null;

@@ -83,7 +83,7 @@ public class TeamRegistrationServlet extends HttpServlet {
 		if(teamDao.addTeam(team)) {
 			Team t = teamDao.getTeamByName(teamName);
 			//Set team id in managers database
-			managerDao.UpdateManagerTeamId(manID, t.getId());
+			managerDao.updateManagerTeamId(manID, t.getId());
 			request.setAttribute("manId", manID);
 			request.setAttribute("team", t);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");

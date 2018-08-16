@@ -10,7 +10,8 @@
 		<div id="header">
 			<h2 align="center">${team.teamName}</h2>
 			<div align="center">
-				<a href="home.jsp">Home</a>	<a href="league_table.jsp">League Table</a> <a href="logout.jsp">Log out</a>
+				<a href="home.jsp">Home</a> <a href="squad.jsp">Squad</a> <a href="transfer.jsp">Transfer</a> 
+				<a href="league_table.jsp">League Table</a> <a href="logout.jsp">Log out</a>
 			</div>
 		</div>
 	</div>

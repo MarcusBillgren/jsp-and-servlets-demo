@@ -1,6 +1,7 @@
 package com.billgren.servlets;
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -8,9 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.billgren.beans.Manager;
+import com.billgren.beans.Team;
 import com.billgren.dbutils.ManagerDao;
 import com.billgren.dbutils.TeamDao;
 
@@ -26,6 +29,7 @@ public class ManagerLoginServlet extends HttpServlet {
 	private DataSource dataSource;
 	
 	private ManagerDao managerDao;
+	private TeamDao teamDao;
        
     @Override
 	public void init() throws ServletException {
@@ -34,6 +38,7 @@ public class ManagerLoginServlet extends HttpServlet {
 		//create a manager db util and pass in dataSoruce
 		try {
 			managerDao = new ManagerDao(dataSource);
+			teamDao = new TeamDao(dataSource);
 		} catch (Exception e) {
 			throw new ServletException();
 		}
@@ -115,6 +120,12 @@ public class ManagerLoginServlet extends HttpServlet {
 		
 		if(managerDao.managerExists(email, password)) {
 			
+			//get manager details
+			/*Manager temp = managerDao.getManager(email);
+			Team team = teamDao.getTeamById(temp.getTeamId());
+			HttpSession session = request.getSession();
+			session.setAttribute("team", team);
+			session.setAttribute("manager",temp);*/
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
 			dispatcher.forward(request, response);
 		}

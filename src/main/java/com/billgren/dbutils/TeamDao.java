@@ -115,4 +115,35 @@ private DataSource dataSource;
 		
 	}
 
+	public Team getTeamById(int id) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		Team team;
+		try {
+
+			String sql = "select * from teams where id=?";
+			connection = dataSource.getConnection();
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, id);
+			
+			resultSet = statement.executeQuery();
+			
+			if(resultSet.next()) {
+				String teamName = resultSet.getString("team_name");
+				team = new Team(id, teamName);
+			}
+			else {
+				throw new Exception("No such team exists");
+			}
+			
+			
+		} finally {
+			close(connection, statement, resultSet);
+		}
+		
+		return team;
+		
+	}
+
 }
