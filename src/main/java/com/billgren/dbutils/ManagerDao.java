@@ -119,7 +119,7 @@ public class ManagerDao {
 			
 			resultSet = statement.executeQuery();
 			
-			if(resultSet.next()) {
+			if(resultSet.first()) {
 				String firstName = resultSet.getString("first_name");
 				String lastName = resultSet.getString("last_name");
 				String email = resultSet.getString("email");
@@ -158,7 +158,8 @@ public class ManagerDao {
 				String lastName = resultSet.getString("last_name");
 				//String mail = resultSet.getString("email");
 				String password = resultSet.getString("password");
-				manager = new Manager(id, firstName, lastName, email, password);
+				int teamId = Integer.parseInt(resultSet.getString("Teams_id"));
+				manager = new Manager(id, firstName, lastName, email, password, teamId);
 				
 			}
 			else {

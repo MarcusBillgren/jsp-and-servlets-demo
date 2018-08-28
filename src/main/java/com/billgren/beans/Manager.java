@@ -15,13 +15,20 @@ public class Manager {
 		this.email = email;
 		this.password = password;
 	}
-	//TEAMID Not included...may be set elsewhere
 	public Manager(int id, String firstName, String lastName, String email, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+	}
+	public Manager(int id, String firstName, String lastName, String email, String password, int teamId) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.teamId = teamId;
 	}
 
 	public int getId() {

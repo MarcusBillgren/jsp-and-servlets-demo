@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.billgren.beans.Team;
@@ -84,8 +85,9 @@ public class TeamRegistrationServlet extends HttpServlet {
 			Team t = teamDao.getTeamByName(teamName);
 			//Set team id in managers database
 			managerDao.updateManagerTeamId(manID, t.getId());
-			request.setAttribute("manId", manID);
-			request.setAttribute("team", t);
+			HttpSession session = request.getSession();
+			session.setAttribute("manager", manID);
+			session.setAttribute("team", t);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
 			dispatcher.forward(request, response);
 		}

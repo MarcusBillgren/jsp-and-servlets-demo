@@ -121,11 +121,12 @@ public class ManagerLoginServlet extends HttpServlet {
 		if(managerDao.managerExists(email, password)) {
 			
 			//get manager details
-			/*Manager temp = managerDao.getManager(email);
+			Manager temp = managerDao.getManager(email);
 			Team team = teamDao.getTeamById(temp.getTeamId());
+			System.out.println(temp.getTeamId() + " is the team id");
 			HttpSession session = request.getSession();
 			session.setAttribute("team", team);
-			session.setAttribute("manager",temp);*/
+			session.setAttribute("manager",temp);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
 			dispatcher.forward(request, response);
 		}

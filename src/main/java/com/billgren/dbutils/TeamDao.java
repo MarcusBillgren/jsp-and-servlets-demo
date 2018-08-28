@@ -129,7 +129,7 @@ private DataSource dataSource;
 			
 			resultSet = statement.executeQuery();
 			
-			if(resultSet.next()) {
+			if(resultSet.first()) {
 				String teamName = resultSet.getString("team_name");
 				team = new Team(id, teamName);
 			}
